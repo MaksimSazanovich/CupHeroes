@@ -1,6 +1,7 @@
+using Internal.Codebase.UI.MainUI.LoadingCurtain;
 using UnityEngine;
 
-namespace Internal.Codebase.UI.MainUI.LoadingCurtain
+namespace Internal.Codebase.Runtime.UI.MainUI.LoadingCurtain
 {
     [CreateAssetMenu(menuName = "StaticData/Create CurtainConfig", fileName = "CurtainConfig", order = 0)]
     public sealed class CurtainConfig : ScriptableObject
