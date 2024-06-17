@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 150}
+  m_SizeDelta: {x: 300, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4551350229522272328
 CanvasRenderer:
@@ -113,7 +113,7 @@ Transform:
   m_Children:
   - {fileID: 7386968151967990981}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4389824503244396494
 SpriteRenderer:
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 823164123
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.64705884, g: 0.5568628, b: 0.20784315, a: 1}
   m_FlipX: 0
@@ -179,7 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f1477443a44a4a81acc2f33c155342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 0
+  <Value>k__BackingField: 2
+  <Id>k__BackingField: 0
+  boxCollider2D: {fileID: -2920072263178730744}
+  spriteRenderer: {fileID: 4389824503244396494}
 --- !u!61 &-2920072263178730744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +289,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 823164123
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &5659661965210238163
 MonoBehaviour:

@@ -19,6 +19,7 @@ namespace Internal.Codebase.Infrastructure.Factories.BallsFactory
         {
             var config = resourceProvider.LoadBallConfig();
             var ball = NightPool.Spawn(config.Ball, position, Quaternion.identity, at);
+            ball.GetComponent<BallCollision>().Constructor(lockMultiplierId);
             return ball;
         }
 

@@ -23,19 +23,22 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
 
         private void Update()
         {
-            CheckBoundaries();
-            
             if (Input.GetMouseButton(0) && canMove)
             {
                 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.position = new Vector3(mousePosition.x, transform.position.y, 0);
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && canMove)
             {
                 canMove = false;
                 OnMouseUp?.Invoke();
             }
+        }
+
+        private void FixedUpdate()
+        {
+            CheckBoundaries();
         }
 
         private void CheckBoundaries()
