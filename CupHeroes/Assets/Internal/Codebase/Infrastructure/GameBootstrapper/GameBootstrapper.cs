@@ -1,6 +1,7 @@
 using Internal.Codebase.Infrastructure.Constants;
 using Internal.Codebase.Infrastructure.Services.LoadingCurtain;
 using Internal.Codebase.Infrastructure.Services.SceneLoader;
+using Internal.Codebase.Runtime.UI.MainUI.LoadingCurtain;
 using Internal.Codebase.UI.MainUI.LoadingCurtain;
 using UnityEngine;
 using Zenject;
