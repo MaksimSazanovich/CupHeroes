@@ -1,3 +1,4 @@
+using Internal.Codebase.Infrastructure.Services.BallSpawnOffsetCalculator;
 using Internal.Codebase.Infrastructure.Services.CoroutineRunner;
 using Internal.Codebase.Infrastructure.Services.LoadingCurtain;
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;
@@ -17,6 +18,8 @@ namespace Internal.Codebase.Infrastructure.Installers
             Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle().NonLazy();
             Container.Bind<ISceneLoaderService>().To<SceneLoaderService>().AsSingle().NonLazy();
             Container.Bind<IResourceProvider>().To<ResourceProvider>().AsSingle().NonLazy();
+            
+            Container.Bind<IBallSpawnOffsetCalculatorService>().To<BallSpawnOffsetCalculatorService>().AsSingle().NonLazy();
             
             Container.Bind<ICurtainService>().To<CurtainService>().AsSingle().NonLazy();
         }

@@ -9,11 +9,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines
     public sealed class BoosterLineCollision : MonoBehaviour
     {
         [SerializeField] private UIShakeAnimation uiShakeAnimation;
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            
-        }
-
+  
         private void OnTriggerEnter2D(Collider2D other)
         {
             if(other.transform.position.y > transform.position.y)

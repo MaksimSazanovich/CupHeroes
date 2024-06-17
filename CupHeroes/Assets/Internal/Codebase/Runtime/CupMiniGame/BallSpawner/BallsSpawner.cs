@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
+using Internal.Codebase.Infrastructure.Services.BallSpawnOffsetCalculator;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
 using Internal.Codebase.Runtime.CupMiniGame.Cup;
 using ModestTree;
@@ -18,14 +19,16 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         [field: SerializeField] public int MaxBallsCount { get; private set; }
 
         private IBallsFactory ballsFactory;
-        private int ballsOnStartMiniGame = 3;
+        private int ballsOnStartMiniGame = 8;
         private Cup.Cup cup;
         private CupController cupController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
+        private IBallSpawnOffsetCalculatorService ballSpawnOffsetCalculatorService;
 
         [Inject]
-        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupController cupController)
+        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupController cupController, IBallSpawnOffsetCalculatorService ballSpawnOffsetCalculatorService)
         {
+            this.ballSpawnOffsetCalculatorService = ballSpawnOffsetCalculatorService;
             this.cup = cup;
             this.ballsFactory = ballsFactory;
             this.cupController = cupController;
@@ -78,7 +81,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, position, lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, ballSpawnOffsetCalculatorService.CalculateOffset(position), lockMultiplierXId));
             }
         }
         

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: <Value>k__BackingField
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2569755663181883994, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+      propertyPath: m_Text
+      value: X4
+      objectReference: {fileID: 0}
     - target: {fileID: 3233376079063334827, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
       propertyPath: m_RootOrder
       value: 0
