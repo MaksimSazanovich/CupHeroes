@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Internal.Codebase.Infrastructure.Services.BallSpawnOffsetCalculator
 {
-    class BallSpawnOffsetCalculatorService : IBallSpawnOffsetCalculatorService
+    class OffsetCalculator : IOffsetCalculator
     {
         private readonly float offset = 0.1f;
 

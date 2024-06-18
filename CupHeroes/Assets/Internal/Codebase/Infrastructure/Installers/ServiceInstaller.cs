@@ -19,7 +19,7 @@ namespace Internal.Codebase.Infrastructure.Installers
             Container.Bind<ISceneLoaderService>().To<SceneLoaderService>().AsSingle().NonLazy();
             Container.Bind<IResourceProvider>().To<ResourceProvider>().AsSingle().NonLazy();
             
-            Container.Bind<IBallSpawnOffsetCalculatorService>().To<BallSpawnOffsetCalculatorService>().AsSingle().NonLazy();
+            Container.Bind<IOffsetCalculator>().To<OffsetCalculator>().AsSingle().NonLazy();
             
             Container.Bind<ICurtainService>().To<CurtainService>().AsSingle().NonLazy();
         }

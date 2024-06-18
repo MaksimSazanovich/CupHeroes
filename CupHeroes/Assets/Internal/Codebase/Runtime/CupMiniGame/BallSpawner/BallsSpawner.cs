@@ -23,12 +23,12 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         private Cup.Cup cup;
         private CupController cupController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
-        private IBallSpawnOffsetCalculatorService ballSpawnOffsetCalculatorService;
+        private IOffsetCalculator offsetCalculator;
 
         [Inject]
-        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupController cupController, IBallSpawnOffsetCalculatorService ballSpawnOffsetCalculatorService)
+        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupController cupController, IOffsetCalculator offsetCalculator)
         {
-            this.ballSpawnOffsetCalculatorService = ballSpawnOffsetCalculatorService;
+            this.offsetCalculator = offsetCalculator;
             this.cup = cup;
             this.ballsFactory = ballsFactory;
             this.cupController = cupController;
@@ -81,7 +81,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, ballSpawnOffsetCalculatorService.CalculateOffset(position), lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, offsetCalculator.CalculateOffset(position), lockMultiplierXId));
             }
         }
         
