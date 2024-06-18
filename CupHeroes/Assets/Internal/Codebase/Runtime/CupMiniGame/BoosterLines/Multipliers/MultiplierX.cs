@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Internal.Codebase.Runtime.CupMiniGame.Multipliers
+namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
 {
     [DisallowMultipleComponent]
     public sealed class MultiplierX : MonoBehaviour

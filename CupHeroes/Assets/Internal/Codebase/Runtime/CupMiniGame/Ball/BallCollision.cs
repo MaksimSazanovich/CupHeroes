@@ -1,5 +1,5 @@
 using System;
-using Internal.Codebase.Runtime.CupMiniGame.Multipliers;
+using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers;
 using NTC.Pool;
 using UnityEngine;
 
@@ -21,8 +21,8 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
             if (other.TryGetComponent(out MultiplierX multiplierX) && multiplierX.Id != lockMultiplierId)
             {
                 lockMultiplierId = multiplierX.Id;
-                OnCollidedMultiplierX?.Invoke(multiplierX.Value, multiplierX.Id, transform.position);
-                Despawn();
+                OnCollidedMultiplierX?.Invoke(multiplierX.Value -1, multiplierX.Id, transform.position);
+                //Despawn();
             }
         }
 

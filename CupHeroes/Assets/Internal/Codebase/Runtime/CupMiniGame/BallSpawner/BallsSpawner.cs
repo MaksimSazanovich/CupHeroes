@@ -80,7 +80,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, OffsetCalculator.Calculate(position, spawnOffset), lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, OffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockMultiplierXId));
             }
         }
         
