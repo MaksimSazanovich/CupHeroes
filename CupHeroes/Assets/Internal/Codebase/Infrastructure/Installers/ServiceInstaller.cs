@@ -1,4 +1,3 @@
-using Internal.Codebase.Infrastructure.Services.BallSpawnOffsetCalculator;
 using Internal.Codebase.Infrastructure.Services.CoroutineRunner;
 using Internal.Codebase.Infrastructure.Services.LoadingCurtain;
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;

@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
-using Internal.Codebase.Infrastructure.Services.BallSpawnOffsetCalculator;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
 using Internal.Codebase.Runtime.CupMiniGame.Cup;
+using Internal.Codebase.Utilities.OffsetCalculator;
 using ModestTree;
 using NTC.Pool;
 using UnityEngine;
@@ -80,7 +80,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, OffsetCalculator.CalculateOffset(position, spawnOffset), lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, OffsetCalculator.Calculate(position, spawnOffset), lockMultiplierXId));
             }
         }
         
