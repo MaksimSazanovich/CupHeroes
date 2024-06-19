@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
 using Internal.Codebase.Runtime.CupMiniGame.Cup;
-using Internal.Codebase.Utilities.OffsetCalculator;
+using Internal.Codebase.Utilities.PositionOffsetCalculator;
 using ModestTree;
 using NTC.Pool;
 using UnityEngine;
@@ -19,7 +19,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         [field: SerializeField] public int MaxBallsCount { get; private set; }
 
         private IBallsFactory ballsFactory;
-        private int ballsOnStartMiniGame = 8;
+        private int ballsOnStartMiniGame = 1;
         private Cup.Cup cup;
         private CupController cupController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
@@ -35,13 +35,13 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
 
         private void OnEnable()
         {
-            BallCollision.OnCollidedMultiplierX += CreateSecondBalls;
+            BallCollision.OnCollidedBoosterLine += CreateSecondBalls;
             cupController.OnMouseUp += Init;
         }
 
         private void OnDisable()
         {
-            BallCollision.OnCollidedMultiplierX -= CreateSecondBalls;
+            BallCollision.OnCollidedBoosterLine -= CreateSecondBalls;
             cupController.OnMouseUp -= Init;
         }
 
@@ -80,7 +80,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, OffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, PositionOffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockMultiplierXId));
             }
         }
         
