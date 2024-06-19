@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
+using Internal.Codebase.Runtime.CupMiniGame.BoosterLines;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers;
-using NTC.Pool;
+using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp;
 using UnityEngine;
 
 namespace Internal.Codebase.Runtime.CupMiniGame.Ball
@@ -8,28 +10,32 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
     [DisallowMultipleComponent]
     public sealed class BallCollision : MonoBehaviour
     {
-        public static Action<int, int, Vector3> OnCollidedMultiplierX;
-        private int lockMultiplierId;
+        public static Action<int, int, Vector3> OnCollidedBoosterLine;
+        private int lockBoosterLineId;
+        private HashSet<int> lockBoosterLineID = new();
 
-        public void Constructor(int lockMultiplierId)
+        public void Constructor(int lockMultiplierID)
         {
-            this.lockMultiplierId = lockMultiplierId;
+            lockBoosterLineID.Add(lockMultiplierID);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out MultiplierX multiplierX) && multiplierX.Id != lockMultiplierId)
+            if (other.TryGetComponent(out BoosterLine boosterLine) && !lockBoosterLineID.Contains(boosterLine.ID) &&
+                transform.position.y > other.transform.position.y)
             {
-                lockMultiplierId = multiplierX.Id;
-                OnCollidedMultiplierX?.Invoke(multiplierX.Value -1, multiplierX.Id, transform.position);
-                //Despawn();
-            }
-        }
+                lockBoosterLineID.Add(boosterLine.ID);
 
-        private void Despawn()
-        {
-            lockMultiplierId = 0;
-            NightPool.Despawn(gameObject);
+                if (other.TryGetComponent(out MultiplierX multiplierX))
+                {
+                    OnCollidedBoosterLine?.Invoke(multiplierX.Value - 1, multiplierX.ID, transform.position);
+                }
+
+                if (other.TryGetComponent(out PusherUp pusherUp))
+                {
+                    lockBoosterLineID.Clear();
+                }
+            }
         }
     }
 }

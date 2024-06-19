@@ -1,16 +1,16 @@
 using System.Collections;
 using Internal.Codebase.Runtime.Constants;
-using Internal.Codebase.Utilities.OffsetCalculator;
+using Internal.Codebase.Utilities.PositionOffsetCalculator;
 using UnityEngine;
 
 namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
 {
     [DisallowMultipleComponent]
-    public sealed class PusherUp : MonoBehaviour
+    public sealed class PusherUp : BoosterLine
     {
         private float force = 9;
         private Collider2D collisionGameObject;
-        private readonly float invincibleTime = 10;
+        private readonly float invincibleTime = 3;
         private float pushOffsetX = 0.5f;
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -24,7 +24,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         {
             Rigidbody2D otherRigidbody2D = collisionGameObject.GetComponent<Rigidbody2D>();
             otherRigidbody2D.velocity = Vector2.zero;
-            Debug.Log(OffsetCalculator.CalculateHorizontally(transform.position, 0.2f));
+            Debug.Log(PositionOffsetCalculator.CalculateHorizontally(transform.position, 0.2f));
             otherRigidbody2D.AddForce(new Vector2(Random.Range(-pushOffsetX, pushOffsetX), force), ForceMode2D.Impulse);
         }
 
@@ -32,7 +32,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         {
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.FlyUp);
             yield return new WaitForSeconds(invincibleTime);
-            collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Default);
+            collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Ball);
         }
     }
 }

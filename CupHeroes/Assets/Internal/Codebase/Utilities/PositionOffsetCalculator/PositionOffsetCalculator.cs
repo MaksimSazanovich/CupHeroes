@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Internal.Codebase.Utilities.OffsetCalculator
+namespace Internal.Codebase.Utilities.PositionOffsetCalculator
 {
-    public static class OffsetCalculator 
+    public static class PositionOffsetCalculator 
     {
         public static Vector3 CalculateСomprehensively(Vector3 position, float offset)
         {

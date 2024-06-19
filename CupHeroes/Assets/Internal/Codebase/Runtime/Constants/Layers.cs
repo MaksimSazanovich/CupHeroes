@@ -6,5 +6,6 @@ namespace Internal.Codebase.Runtime.Constants
     {
         public const string FlyUp = "FlyUp";
         public const string Default = "Default";
+        public const string Ball = "Ball";
     }
 }
