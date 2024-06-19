@@ -8,9 +8,10 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
     [DisallowMultipleComponent]
     public sealed class PusherUp : MonoBehaviour
     {
-        private const float Force = 15;
+        private float force = 9;
         private Collider2D collisionGameObject;
-        private float invincibleTime = 10;
+        private readonly float invincibleTime = 10;
+        private float pushOffsetX = 0.5f;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -23,14 +24,13 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         {
             Rigidbody2D otherRigidbody2D = collisionGameObject.GetComponent<Rigidbody2D>();
             otherRigidbody2D.velocity = Vector2.zero;
-            otherRigidbody2D.AddForce(new Vector2(OffsetCalculator.CalculateHorizontally(transform.position, 0.1f).x, Force),
-                ForceMode2D.Impulse);
+            Debug.Log(OffsetCalculator.CalculateHorizontally(transform.position, 0.2f));
+            otherRigidbody2D.AddForce(new Vector2(Random.Range(-pushOffsetX, pushOffsetX), force), ForceMode2D.Impulse);
         }
 
         private IEnumerator ChangeCollisionObjectLayer()
         {
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.FlyUp);
-            Debug.Log(collisionGameObject.gameObject.layer);
             yield return new WaitForSeconds(invincibleTime);
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Default);
         }
