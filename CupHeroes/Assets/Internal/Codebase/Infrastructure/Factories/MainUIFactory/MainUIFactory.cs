@@ -1,10 +1,10 @@
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;
-using Internal.Codebase.UI.MainUI.LoadingCurtain;
+using Internal.Codebase.Runtime.UI.MainUI.LoadingCurtain;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace Internal.Codebase.Infrastructure.Factories
+namespace Internal.Codebase.Infrastructure.Factories.MainUIFactory
 {
     class MainUIFactory : IMainUIFactory
     {

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
@@ -19,7 +18,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         [field: SerializeField] public int MaxBallsCount { get; private set; }
 
         private IBallsFactory ballsFactory;
-        private int ballsOnStartMiniGame = 1;
+        private int ballsOnStartMiniGame = 7;
         private Cup.Cup cup;
         private CupController cupController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
@@ -80,7 +79,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, PositionOffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockBoosterLineIDs));
+                Balls.Add(ballsFactory.CreateBall(transform, PositionOffsetCalculator.CalculateBothAxis(position, spawnOffset), lockBoosterLineIDs));
             }
         }
         

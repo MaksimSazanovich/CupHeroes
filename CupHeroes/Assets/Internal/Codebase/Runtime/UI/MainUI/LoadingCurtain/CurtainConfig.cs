@@ -1,4 +1,3 @@
-using Internal.Codebase.UI.MainUI.LoadingCurtain;
 using UnityEngine;
 
 namespace Internal.Codebase.Runtime.UI.MainUI.LoadingCurtain

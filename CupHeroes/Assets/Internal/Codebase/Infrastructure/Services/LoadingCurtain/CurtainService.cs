@@ -1,6 +1,6 @@
 using System;
-using Internal.Codebase.Infrastructure.Factories;
-using Internal.Codebase.UI.MainUI.LoadingCurtain;
+using Internal.Codebase.Infrastructure.Factories.MainUIFactory;
+using Internal.Codebase.Runtime.UI.MainUI.LoadingCurtain;
 using Zenject;
 
 namespace Internal.Codebase.Infrastructure.Services.LoadingCurtain

@@ -4,7 +4,7 @@ namespace Internal.Codebase.Utilities.PositionOffsetCalculator
 {
     public static class PositionOffsetCalculator 
     {
-        public static Vector3 CalculateСomprehensively(Vector3 position, float offset)
+        public static Vector3 CalculateBothAxis(Vector3 position, float offset)
         {
             return new Vector3(Random.Range(position.x - offset, position.x + offset), Random.Range(position.y - offset, position.y + offset), 0);
         }

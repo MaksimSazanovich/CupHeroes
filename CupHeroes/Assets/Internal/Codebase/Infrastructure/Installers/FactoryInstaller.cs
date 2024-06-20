@@ -1,5 +1,6 @@
 using Internal.Codebase.Infrastructure.Factories;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
+using Internal.Codebase.Infrastructure.Factories.MainUIFactory;
 using UnityEngine;
 using Zenject;
 

@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Internal.Codebase.Runtime.Constants;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
-using Internal.Codebase.Utilities.PositionOffsetCalculator;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
