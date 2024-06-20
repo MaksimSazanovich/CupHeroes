@@ -181,10 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f1477443a44a4a81acc2f33c155342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 2
-  <Id>k__BackingField: 0
+  <ID>k__BackingField: 0
   boxCollider2D: {fileID: -2920072263178730744}
   spriteRenderer: {fileID: 4389824503244396494}
+  <Value>k__BackingField: 2
 --- !u!61 &-2920072263178730744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiShakeAnimation: {fileID: 4456407676579287910}
+  boosterLine: {fileID: 366335912356219736}
 --- !u!1 &4551025335384802549
 GameObject:
   m_ObjectHideFlags: 0

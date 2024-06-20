@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
 using NTC.Pool;
@@ -15,11 +16,11 @@ namespace Internal.Codebase.Infrastructure.Factories.BallsFactory
         {
             this.resourceProvider = resourceProvider;
         }
-        public Ball CreateBall(Transform at, Vector3 position, int lockMultiplierId)
+        public Ball CreateBall(Transform at, Vector3 position, HashSet<int> lockBoosterLineIDs)
         {
             var config = resourceProvider.LoadBallConfig();
             var ball = NightPool.Spawn(config.Ball, position, Quaternion.identity, at);
-            ball.GetComponent<BallCollision>().Constructor(lockMultiplierId);
+            ball.GetComponent<BallCollision>().Constructor(lockBoosterLineIDs);
             return ball;
         }
 

@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: <Value>k__BackingField
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1333648052070238609, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+      propertyPath: boosterLine
+      value: 
+      objectReference: {fileID: -4899551257735496931}
+    - target: {fileID: 1925020858707550199, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2569755663181883994, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
       propertyPath: m_Text
       value: "\uFE3D"
@@ -76,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PusherUp
       objectReference: {fileID: 0}
+    - target: {fileID: 3577310520443420027, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4389824503244396494, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
       propertyPath: m_Color.b
       value: 0.9960785
@@ -116,6 +128,10 @@ PrefabInstance:
       propertyPath: rectTransform
       value: 
       objectReference: {fileID: 9146094005378568563}
+    - target: {fileID: 4551025335384802549, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7386968151967990981, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -160,6 +176,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -4899551257735496931}
   m_SourcePrefab: {fileID: 100100000, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+--- !u!212 &2631639642565657208 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4389824503244396494, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+  m_PrefabInstance: {fileID: 1760551690513569206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3011664157717719245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3577310520443420027, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
@@ -177,6 +198,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba165db5f3084041bad692cadc695b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: 0
+  boxCollider2D: {fileID: 5699144594571433662}
+  spriteRenderer: {fileID: 2631639642565657208}
+--- !u!61 &5699144594571433662 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: -2920072263178730744, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
+  m_PrefabInstance: {fileID: 1760551690513569206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9146094005378568563 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7386968151967990981, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}

@@ -35,13 +35,13 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
 
         private void OnEnable()
         {
-            BallCollision.OnCollidedBoosterLine += CreateSecondBalls;
+            BallCollision.OnCollidedMultiplierX += CreateSecondBalls;
             cupController.OnMouseUp += Init;
         }
 
         private void OnDisable()
         {
-            BallCollision.OnCollidedBoosterLine -= CreateSecondBalls;
+            BallCollision.OnCollidedMultiplierX -= CreateSecondBalls;
             cupController.OnMouseUp -= Init;
         }
 
@@ -76,11 +76,11 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
             }
         }
 
-        private void CreateSecondBalls(int count, int lockMultiplierXId, Vector3 position)
+        private void CreateSecondBalls(int count, HashSet<int> lockBoosterLineIDs, Vector3 position)
         {
             for (int i = 0; i < count; i++)
             {
-                Balls.Add(ballsFactory.CreateBall(transform, PositionOffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockMultiplierXId));
+                Balls.Add(ballsFactory.CreateBall(transform, PositionOffsetCalculator.CalculateСomprehensively(position, spawnOffset), lockBoosterLineIDs));
             }
         }
         
