@@ -11,10 +11,9 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines
         [SerializeField] private UIShakeAnimation uiShakeAnimation;
         [SerializeField] private BoosterLine boosterLine;
   
-        private void OnTriggerEnter2D(Collider2D other)
+        public void TriggerEnter2D(BallCollision ballCollision)
         {
-            if(other.gameObject.TryGetComponent(out BallCollision ballCollision) &&
-               !ballCollision.LockBoosterLineIDs.Contains(boosterLine.ID) && other.transform.position.y > transform.position.y)
+            if(!ballCollision.LockBoosterLineIDs.Contains(boosterLine.ID))
                 uiShakeAnimation.Animate();
         }
     }

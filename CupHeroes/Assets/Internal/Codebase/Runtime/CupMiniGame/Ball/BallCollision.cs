@@ -14,6 +14,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
     {
         public static Action<int, HashSet<int>, Vector3> OnCollidedMultiplierX;
         public static Action<Collider2D> OnCollidedPusherUp;
+        public static Action OnCollideHorizontalMovingPlatform;
         private CircleCollider2D collider2D;
         public HashSet<int> LockBoosterLineIDs { get; private set; } = new();
 
@@ -25,33 +26,23 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
         public void Constructor(HashSet<int> lockBoosterLineIDs)
         {
             LockBoosterLineIDs = lockBoosterLineIDs;
-            //DebugHashSet();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            /*if (other.TryGetComponent(out BoosterLine boosterLine) && !LockBoosterLineIDs.Contains(boosterLine.ID)
-                                                                   && transform.position.y > other.transform.position.y)
-            {*/
-                
-     
-            /*}*/
-
-
-            if (other.TryGetComponent(out BoosterLine boosterLine))
+            if (transform.position.y > other.transform.position.y)
             {
-                // Debug.Log(boosterLine.ID);
-                 //Debug.Log(!LockBoosterLineIDs.Contains(boosterLine.ID));
-                 DebugHashSet();
-                if (!LockBoosterLineIDs.Contains(boosterLine.ID))
+                if (other.TryGetComponent(out BoosterLine boosterLine))
                 {
-                    if (transform.position.y > other.transform.position.y)
+                    if (!LockBoosterLineIDs.Contains(boosterLine.ID))
                     {
-                        
+                        boosterLine.GetComponent<BoosterLineCollision>().TriggerEnter2D(this);
+
                         if (other.TryGetComponent(out MultiplierX multiplierX))
                         {
                             LockBoosterLineIDs.Add(multiplierX.ID);
-                            OnCollidedMultiplierX?.Invoke(multiplierX.Value - 1, new HashSet<int>(LockBoosterLineIDs), transform.position);
+                            OnCollidedMultiplierX?.Invoke(multiplierX.Value - 1, new HashSet<int>(LockBoosterLineIDs),
+                                transform.position);
                         }
 
                         else if (other.TryGetComponent(out PusherUp pusherUp))
@@ -62,7 +53,15 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
                         }
                     }
                 }
+                
+                else if (other.TryGetComponent(out HorizontalMovingPlatform movingPlatform))
+                {
+                    Debug.Log("qwertyuio");
+                    OnCollideHorizontalMovingPlatform?.Invoke();
+                }
             }
+
+         
         }
 
         [Button]
