@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Internal.Codebase.Runtime.CupMiniGame.Cup
 {
     [DisallowMultipleComponent]
-    public sealed class CupController : MonoBehaviour
+    public sealed class CupMovementController : MonoBehaviour
     {
         private Camera camera;
         private Vector3 mousePosition;
@@ -12,30 +13,26 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
         private bool canMove;
         [SerializeField] private float leftBoundary;
         [SerializeField] private float rightBoundary;
-
-        public Action OnMouseUp;
+        
+        public Action OnMouseDown;
+        private bool canDrop = true;
 
         private void Start()
         {
-            canMove = true;
+            //canMove = true;
             camera = Camera.main;
         }
 
         private void Update()
         {
-            if (Input.GetMouseButton(0) && canMove)
+            if (Input.GetMouseButton(0) /* && canMove*/)
             {
                 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.position = new Vector3(mousePosition.x, transform.position.y, 0);
 
-                Debug.Log(mousePosition.x);
                 CheckBoundaries();
-            }
 
-            if (Input.GetMouseButtonUp(0) && canMove)
-            {
-                canMove = false;
-                OnMouseUp?.Invoke();
+                OnMouseDown?.Invoke();
             }
         }
 

@@ -20,28 +20,28 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         private IBallsFactory ballsFactory;
         private int ballsOnStartMiniGame = 7;
         private Cup.Cup cup;
-        private CupController cupController;
+        private CupDropController cupDropController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
         private float spawnOffset = 0.1f;
 
         [Inject]
-        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupController cupController)
+        public void Constructor(IBallsFactory ballsFactory, Cup.Cup cup, CupDropController cupDropController)
         {
             this.cup = cup;
             this.ballsFactory = ballsFactory;
-            this.cupController = cupController;
+            this.cupDropController = cupDropController;
         }
 
         private void OnEnable()
         {
             BallCollision.OnCollidedMultiplierX += CreateSecondBalls;
-            cupController.OnMouseUp += Init;
+            cupDropController.OnDropped += Init;
         }
 
         private void OnDisable()
         {
             BallCollision.OnCollidedMultiplierX -= CreateSecondBalls;
-            cupController.OnMouseUp -= Init;
+            cupDropController.OnDropped -= Init;
         }
 
         private void Start()
