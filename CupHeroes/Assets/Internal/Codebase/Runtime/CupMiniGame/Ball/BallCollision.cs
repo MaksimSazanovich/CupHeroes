@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers;
+using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.HorizontalMovingPlatform;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp;
 using NaughtyAttributes;
 using UnityEngine;

@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: cd40ab8da96a0b9458eddc1b2c657596
+guid: 55db95ed5e224de4c8810f9ab0c5fbbb
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -9095717837082945937
-    second: Capsule
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -46,17 +43,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -68,11 +65,11 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,33 +94,20 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -150,98 +134,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Capsule
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 512
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 150, z: 0, w: 150}
-      outline:
-      - - {x: -33, y: 256}
-        - {x: -95, y: 223}
-        - {x: -128, y: 161}
-        - {x: -128, y: -161}
-        - {x: -95, y: -223}
-        - {x: -33, y: -256}
-        - {x: 33, y: -256}
-        - {x: 95, y: -223}
-        - {x: 128, y: -161}
-        - {x: 128, y: 161}
-        - {x: 95, y: 223}
-        - {x: 33, y: 256}
-      physicsShape:
-      - - {x: 0, y: 256}
-        - {x: -39, y: 249}
-        - {x: -75, y: 231}
-        - {x: -103, y: 203}
-        - {x: -121, y: 167}
-        - {x: -128, y: 128}
-        - {x: -128, y: -128}
-        - {x: -121, y: -167}
-        - {x: -103, y: -203}
-        - {x: -75, y: -231}
-        - {x: -39, y: -249}
-        - {x: 0, y: -256}
-        - {x: 39, y: -249}
-        - {x: 75, y: -231}
-        - {x: 103, y: -203}
-        - {x: 121, y: -167}
-        - {x: 128, y: -128}
-        - {x: 128, y: 128}
-        - {x: 121, y: 167}
-        - {x: 103, y: 203}
-        - {x: 75, y: 231}
-        - {x: 39, y: 249}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f669c7f71d485c180800000000000000
-      internalID: -9095717837082945937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline:
-    - - {x: -33, y: 256}
-      - {x: -95, y: 223}
-      - {x: -128, y: 161}
-      - {x: -128, y: -161}
-      - {x: -95, y: -223}
-      - {x: -33, y: -256}
-      - {x: 33, y: -256}
-      - {x: 95, y: -223}
-      - {x: 128, y: -161}
-      - {x: 128, y: 161}
-      - {x: 95, y: 223}
-      - {x: 33, y: 256}
-    physicsShape:
-    - - {x: 0, y: 256}
-      - {x: -39, y: 249}
-      - {x: -75, y: 231}
-      - {x: -103, y: 203}
-      - {x: -121, y: 167}
-      - {x: -128, y: 128}
-      - {x: -128, y: -128}
-      - {x: -121, y: -167}
-      - {x: -103, y: -203}
-      - {x: -75, y: -231}
-      - {x: -39, y: -249}
-      - {x: 0, y: -256}
-      - {x: 39, y: -249}
-      - {x: 75, y: -231}
-      - {x: 103, y: -203}
-      - {x: 121, y: -167}
-      - {x: 128, y: -128}
-      - {x: 128, y: 128}
-      - {x: 121, y: 167}
-      - {x: 103, y: 203}
-      - {x: 75, y: 231}
-      - {x: 39, y: 249}
+    sprites: []
+    outline: []
+    physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
@@ -250,8 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Capsule: -9095717837082945937
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
