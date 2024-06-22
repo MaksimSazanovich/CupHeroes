@@ -11,6 +11,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
         
         private CupMovementController movementController;
         private bool canDrop = true;
+        private float timeBeforeDrop = 0.3f;
 
         private void Awake()
         {
@@ -36,7 +37,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
         private IEnumerator DropTimer()
         {
             canDrop = false;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(timeBeforeDrop);
             OnDropped?.Invoke();
         }
     }

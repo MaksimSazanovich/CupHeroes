@@ -1,6 +1,6 @@
-using Internal.Codebase.Infrastructure.Factories;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
 using Internal.Codebase.Infrastructure.Factories.MainUIFactory;
+using Internal.Codebase.Infrastructure.Factories.MultipliersFactory;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +13,7 @@ namespace Internal.Codebase.Infrastructure.Installers
         {
             Container.Bind<IMainUIFactory>().To<MainUIFactory>().AsSingle().NonLazy();
             Container.Bind<IBallsFactory>().To<BallsFactory>().AsSingle().NonLazy();
+            Container.Bind<IMultipliersFactory>().To<MultipliersFactory>().AsSingle().NonLazy();
         }
     }
 }

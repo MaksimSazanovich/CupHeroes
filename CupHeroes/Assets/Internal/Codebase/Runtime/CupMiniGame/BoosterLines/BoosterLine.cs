@@ -9,10 +9,18 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines
 
         [SerializeField] private BoxCollider2D boxCollider2D;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private RectTransform canvas;
         
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
-            boxCollider2D.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y);
-        }  
+            SetSize(spriteRenderer.size);
+        }
+
+        public void SetSize(Vector2 size)
+        {
+            spriteRenderer.size = size;
+            boxCollider2D.size = new Vector2(size.x, size.y);
+            canvas.sizeDelta = new(size.x, size.y);
+        }
     }
 }

@@ -205,6 +205,7 @@ MonoBehaviour:
   <ID>k__BackingField: 0
   boxCollider2D: {fileID: 5699144594571433662}
   spriteRenderer: {fileID: 2631639642565657208}
+  canvas: {fileID: 9146094005378568563}
 --- !u!61 &5699144594571433662 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: -2920072263178730744, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
