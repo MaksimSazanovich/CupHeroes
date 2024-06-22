@@ -20,13 +20,18 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
         private float waitTimer;
         private float waitTime = 1;
 
-        private void Start()
+        private void Awake()
         {
             currentTarget = new Vector3(leftPointX, transform.position.y);
             transform.position = currentTarget;
             waitTimer = waitTime;
             leftPoint = new Vector3(leftPointX, transform.position.y);
             rightPoint = new Vector3(rightPointX, transform.position.y);
+        }
+
+        private void Start()
+        {
+            
         }
 
         private void OnEnable()

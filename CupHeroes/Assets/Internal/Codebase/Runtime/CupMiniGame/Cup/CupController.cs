@@ -10,7 +10,8 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
         private Vector3 mousePosition;
         private Vector3 screenBounds;
         private bool canMove;
-        [SerializeField] private float offset;
+        [SerializeField] private float leftBoundary;
+        [SerializeField] private float rightBoundary;
 
         public Action OnMouseUp;
 
@@ -18,7 +19,6 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
         {
             canMove = true;
             camera = Camera.main;
-            screenBounds = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)) - Vector3.one * offset;
         }
 
         private void Update()
@@ -27,6 +27,9 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
             {
                 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.position = new Vector3(mousePosition.x, transform.position.y, 0);
+
+                Debug.Log(mousePosition.x);
+                CheckBoundaries();
             }
 
             if (Input.GetMouseButtonUp(0) && canMove)
@@ -36,14 +39,9 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Cup
             }
         }
 
-        private void FixedUpdate()
-        {
-            CheckBoundaries();
-        }
-
         private void CheckBoundaries()
         {
-            float x = Mathf.Clamp(transform.position.x, -screenBounds.x, screenBounds.x);
+            float x = Mathf.Clamp(transform.position.x, leftBoundary, rightBoundary);
             transform.position = new Vector3(x, transform.position.y, 0);
         }
     }

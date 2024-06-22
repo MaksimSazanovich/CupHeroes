@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f1477443a44a4a81acc2f33c155342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: 0
+  <ID>k__BackingField: 10
   boxCollider2D: {fileID: 1409539893}
   spriteRenderer: {fileID: 1409539895}
   <Value>k__BackingField: 3
