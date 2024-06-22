@@ -56,7 +56,6 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
                 
                 else if (other.TryGetComponent(out HorizontalMovingPlatform movingPlatform))
                 {
-                    Debug.Log("qwertyuio");
                     OnCollideHorizontalMovingPlatform?.Invoke();
                 }
             }

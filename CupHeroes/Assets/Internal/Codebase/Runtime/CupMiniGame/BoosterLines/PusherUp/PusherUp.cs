@@ -40,7 +40,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
 
         private IEnumerator ChangeCollisionObjectLayer()
         {
-            collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.FlyUp);
+            collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Flyup);
             yield return new WaitForSeconds(invincibleTime);
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Ball);
         }
