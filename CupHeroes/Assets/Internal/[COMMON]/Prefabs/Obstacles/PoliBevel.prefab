@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3599153527513003481}
   - component: {fileID: 1940495116561171251}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6596715973840175879}
   - component: {fileID: 689651830180830763}
   - component: {fileID: 6531695001204620480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4395199716044729866}
   - component: {fileID: 3205506093624061059}
   - component: {fileID: 820129470227387970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 6001286741445655521}
   - component: {fileID: 8815353193102914914}
   - component: {fileID: 853737197878664075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8882980159433799410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706433839012445802}
   - component: {fileID: 5361409827796113935}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7411823210945981809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PoliBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

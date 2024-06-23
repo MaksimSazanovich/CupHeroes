@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 569225628025549135}
   - component: {fileID: 348693775381897211}
   - component: {fileID: 8329656392375907194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7004935621058246958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightBevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6385764419705863055}
   - component: {fileID: 1052732988813938510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 8055143812571478311}
   - component: {fileID: 2926912303223300920}
   - component: {fileID: 8287197254892360732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

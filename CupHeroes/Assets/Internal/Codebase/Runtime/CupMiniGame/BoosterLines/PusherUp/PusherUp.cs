@@ -12,7 +12,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         private float force = 9;
         private Collider2D collisionGameObject;
         private readonly float invincibleTime = 3;
-        private float pushOffsetX = 0.5f;
+        private float pushOffsetX = 2f;
 
         private void OnEnable()
         {

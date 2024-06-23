@@ -4,11 +4,11 @@ namespace Internal.Codebase.Utilities.SpeedCalculator
 {
     public static class CalculateSpeedEquidistantMotion
     {
-        private const float koef = 1.8f;
+        private const float koef = 2.6f;
 
-        public static float Calculate(float time, float path)
+        public static float Calculate(float movingTime, float path)
         {
-            return path / time * Smooth(time);
+            return path / movingTime * Smooth(movingTime);
         }
 
         private static float Smooth(float time)
