@@ -1,5 +1,6 @@
 using System;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
+using Internal.Codebase.Utilities.SpeedCalculator;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,7 +10,9 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
     {
         [SerializeField] private float leftPointX;
         [SerializeField] private float rightPointX;
-        [SerializeField] private float speed = 1;
+
+        [SerializeField] private float movingTime;
+        //[SerializeField] private float speed = 1;
         [SerializeField] private float stopTime = 1;
 
         [SerializeField] private Points startPoint;
@@ -49,15 +52,15 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
                 Stop();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (canMove)
             {
-                transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, currentTarget, CalculateSpeedEquidistantMotion.Calculate(movingTime, (rightPointX-leftPointX)) );
 
                 if (Vector3.Distance(transform.position, currentTarget) < 0.01f)
                 {
-                    stopTimer -= Time.deltaTime;
+                    stopTimer -= Time.fixedDeltaTime;
 
                     if (stopTimer <= 0f)
                     {
