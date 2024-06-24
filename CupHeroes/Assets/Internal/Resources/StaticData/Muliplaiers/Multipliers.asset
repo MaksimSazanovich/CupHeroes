@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MultiplierX>k__BackingField: {fileID: 366335912356219736, guid: 413937e9196389e43ae99ff6e03a21af, type: 3}
   <MinValue>k__BackingField: 2
-  <MaxValue>k__BackingField: 6
+  <MaxValue>k__BackingField: 7

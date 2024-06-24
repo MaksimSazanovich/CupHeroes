@@ -139,6 +139,7 @@ MonoBehaviour:
   stopTime: 0.5
   startPoint: 0
   movingTypes: 0
+  linearSpeed: 0
 --- !u!61 &914706546292161130
 BoxCollider2D:
   m_ObjectHideFlags: 0
