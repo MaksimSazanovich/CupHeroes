@@ -1,10 +1,6 @@
-using System;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
 using Internal.Codebase.Utilities.SpeedCalculator;
-using Unity.Burst.Intrinsics;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.HorizontalMovingPlatform
 {
@@ -33,6 +29,8 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
 
         private float stopTimer;
         private float currentTime;
+        private float maxDistanceDelta;
+        [SerializeField] private float linearSpeed;
 
         private void Awake()
         {
@@ -68,28 +66,45 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
                 if (movingTypes == MovingTypes.math)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, currentTarget,
-                        CalculateSpeedEquidistantMotion.Calculate(movingTime, (rightPointX - leftPointX))*Time.fixedDeltaTime);
+                        CalculateSpeedEquidistantMotion.Calculate(movingTime, (rightPointX - leftPointX)) *
+                        Time.fixedDeltaTime);
                 }
+                else if (movingTypes == MovingTypes.math)
+                {
+                    if (currentTime < movingTime / 2)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, currentTarget,
+                            acceleration * Mathf.Pow(currentTime, 2) / 2 -
+                            acceleration * Mathf.Pow(currentTime - Time.fixedDeltaTime, 2) / 2);
+                    }
+                    else
+                    {
+                        float maxSpeed = acceleration * movingTime / 2;
+                        float time = currentTime - movingTime / 2;
+                        maxDistanceDelta = Mathf.Abs((maxSpeed * time - acceleration * Mathf.Pow(time, 2) / 2) -
+                                                     (maxSpeed * (time - Time.fixedDeltaTime) - acceleration *
+                                                         Mathf.Pow(time - Time.fixedDeltaTime, 2) / 2));
+                        Debug.Log(nameof(maxSpeed) + maxSpeed);
+                        Debug.Log(nameof(time) + time);
+                        Debug.Log(maxDistanceDelta);
+                        transform.position = Vector3.MoveTowards(transform.position, currentTarget,
+                            maxDistanceDelta);
+                    }
+                }
+
                 else
-                {   transform.position = Vector3.MoveTowards(transform.position, currentTarget,
-                    CalculateSpeedEquidistantMotionV2.Calculate(acceleration, movingTime, currentTime) + (acceleration*Time.fixedDeltaTime * Time.fixedDeltaTime)/2);
-                }
-
-
-
-             
+                    transform.position = Vector3.MoveTowards(transform.position, currentTarget, linearSpeed * Time.fixedDeltaTime);
 
 
                 if (Vector3.Distance(transform.position, currentTarget) < 0.01f)
                 {
-                    
                     stopTimer -= Time.fixedDeltaTime;
 
                     if (stopTimer <= 0f)
                     {
                         currentTarget = (currentTarget == leftPoint) ? rightPoint : leftPoint;
                         stopTimer = stopTime;
-                        
+
                         Debug.Log(currentTime);
                         currentTime = 0;
                     }
@@ -103,6 +118,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
     public enum MovingTypes
     {
         math,
-        physic
+        physic,
+        linear
     }
 }

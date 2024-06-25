@@ -32,7 +32,6 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
             {
                 int randomValue = Random.Range(resourceProvider.LoadMultipliersConfig().MinValue,
                     resourceProvider.LoadMultipliersConfig().MaxValue);
-                Debug.Log(randomValue);
                 
                 multipliersFactory.CreateMultiplierX(randomValue, spriteRenderer.size, transform.position);
                 gameObject.SetActive(false);

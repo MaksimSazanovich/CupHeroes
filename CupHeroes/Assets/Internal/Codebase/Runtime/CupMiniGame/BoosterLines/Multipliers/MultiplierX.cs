@@ -1,17 +1,35 @@
+using Internal.Codebase.Infrastructure.Services.ResourceProvider;
 using Internal.Codebase.Runtime.Constants;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+
 
 namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
 {
     [DisallowMultipleComponent]
     public class MultiplierX : BoosterLine
     {
+        private IResourceProvider resourceProvider;
         [field: SerializeField] public int Value { get; private set; }
 
         protected override void OnValidate()
         {
             base.OnValidate();
+            SetSettings(Value);
+        }
+
+        [Inject]
+        private void Constructor(IResourceProvider resourceProvider)
+        {
+            this.resourceProvider = resourceProvider;
+        }
+
+        private void Start()
+        {
+            int randomValue = Random.Range(resourceProvider.LoadMultipliersConfig().MinValue,
+                resourceProvider.LoadMultipliersConfig().MaxValue);
+            Value = randomValue;
             SetSettings(Value);
         }
 
