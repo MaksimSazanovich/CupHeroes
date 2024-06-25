@@ -42,6 +42,9 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
                 case 6:
                     spriteRenderer.color = Colors.x5;
                     break;
+                case 7:
+                    spriteRenderer.color = Colors.x5;
+                    break;
             }
         }
     }
