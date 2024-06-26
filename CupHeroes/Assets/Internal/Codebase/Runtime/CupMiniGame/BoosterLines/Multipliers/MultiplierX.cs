@@ -12,6 +12,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
     {
         private IResourceProvider resourceProvider;
         [field: SerializeField] public int Value { get; private set; }
+        
 
         protected override void OnValidate()
         {

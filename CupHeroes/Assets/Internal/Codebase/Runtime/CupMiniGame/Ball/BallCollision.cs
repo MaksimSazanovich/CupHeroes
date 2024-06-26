@@ -24,6 +24,22 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
             collider2D = GetComponent<CircleCollider2D>();
         }
 
+        private void OnEnable()
+        {
+            PusherUp.OnFelt += LockPusherUpID;
+        }
+
+        private void OnDisable()
+        {
+            PusherUp.OnFelt -= LockPusherUpID;
+        }
+
+        private void LockPusherUpID(int ID)
+        {
+            LockBoosterLineIDs.Clear();
+            LockBoosterLineIDs.Add(ID);
+        }
+
         public void Constructor(HashSet<int> lockBoosterLineIDs)
         {
             LockBoosterLineIDs = lockBoosterLineIDs;
@@ -31,7 +47,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (transform.position.y > other.transform.position.y)
+            if (transform.position.y >= other.transform.position.y)
             {
                 if (other.TryGetComponent(out BoosterLine boosterLine))
                 {
@@ -39,29 +55,26 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
                     {
                         boosterLine.GetComponent<BoosterLineCollision>().TriggerEnter2D(this);
 
+                        if (other.TryGetComponent(out PusherUp pusherUp))
+                        {
+                            OnCollidedPusherUp?.Invoke(collider2D);
+                            return;
+                        }
+
                         if (other.TryGetComponent(out MultiplierX multiplierX))
                         {
                             LockBoosterLineIDs.Add(multiplierX.ID);
                             OnCollidedMultiplierX?.Invoke(multiplierX.Value - 1, new HashSet<int>(LockBoosterLineIDs),
                                 transform.position);
                         }
-
-                        else if (other.TryGetComponent(out PusherUp pusherUp))
-                        {
-                            LockBoosterLineIDs.Clear();
-                            LockBoosterLineIDs.Add(pusherUp.ID);
-                            OnCollidedPusherUp?.Invoke(collider2D);
-                        }
                     }
                 }
-                
+
                 else if (other.TryGetComponent(out HorizontalMovingPlatform movingPlatform))
                 {
                     OnCollideHorizontalMovingPlatform?.Invoke();
                 }
             }
-
-         
         }
 
         [Button]

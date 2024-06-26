@@ -18,7 +18,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
         [field: SerializeField] public int MaxBallsCount { get; private set; }
 
         private IBallsFactory ballsFactory;
-        private int ballsOnStartMiniGame = 7;
+        private int ballsOnStartMiniGame = 8;
         private Cup.Cup cup;
         private CupDropController cupDropController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
