@@ -53,7 +53,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.Horizon
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out BallCollision ballCollision))
+            if (other.TryGetComponent(out BallCollision ballCollision) && transform.position.y <= other.transform.position.y)
                 Stop();
         }
 

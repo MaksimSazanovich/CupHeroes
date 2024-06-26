@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers;
-using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers.HorizontalMovingPlatform;
 using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp;
 using NaughtyAttributes;
 using UnityEngine;
@@ -13,9 +11,6 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
     [DisallowMultipleComponent]
     public sealed class BallCollision : MonoBehaviour
     {
-        public static Action<int, HashSet<int>, Vector3> OnCollidedMultiplierX;
-        public static Action<Collider2D> OnCollidedPusherUp;
-        public static Action OnCollideHorizontalMovingPlatform;
         private CircleCollider2D collider2D;
         public HashSet<int> LockBoosterLineIDs { get; private set; } = new();
 
@@ -27,6 +22,12 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
         private void OnEnable()
         {
             PusherUp.OnFelt += LockPusherUpID;
+            MultiplierX.OnCollidedMultiplierX += LockMultiplierX;
+        }
+
+        private void LockMultiplierX(int ID, HashSet<int> arg2, Vector3 arg3)
+        {
+            LockBoosterLineIDs.Add(ID);
         }
 
         private void OnDisable()
@@ -47,33 +48,10 @@ namespace Internal.Codebase.Runtime.CupMiniGame.Ball
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (transform.position.y >= other.transform.position.y)
+            if (other.TryGetComponent(out BoosterLine boosterLine) && transform.position.y >= other.transform.position.y
+                                                                   && !LockBoosterLineIDs.Contains(boosterLine.ID))
             {
-                if (other.TryGetComponent(out BoosterLine boosterLine))
-                {
-                    if (!LockBoosterLineIDs.Contains(boosterLine.ID))
-                    {
-                        boosterLine.GetComponent<BoosterLineCollision>().TriggerEnter2D(this);
-
-                        if (other.TryGetComponent(out PusherUp pusherUp))
-                        {
-                            OnCollidedPusherUp?.Invoke(collider2D);
-                            return;
-                        }
-
-                        if (other.TryGetComponent(out MultiplierX multiplierX))
-                        {
-                            LockBoosterLineIDs.Add(multiplierX.ID);
-                            OnCollidedMultiplierX?.Invoke(multiplierX.Value - 1, new HashSet<int>(LockBoosterLineIDs),
-                                transform.position);
-                        }
-                    }
-                }
-
-                else if (other.TryGetComponent(out HorizontalMovingPlatform movingPlatform))
-                {
-                    OnCollideHorizontalMovingPlatform?.Invoke();
-                }
+                boosterLine.GetComponent<BoosterLineCollision>().TriggerEnter2D(this);
             }
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
+using Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers;
 using Internal.Codebase.Runtime.CupMiniGame.Cup;
 using Internal.Codebase.Utilities.PositionOffsetCalculator;
 using ModestTree;
@@ -34,13 +35,13 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
 
         private void OnEnable()
         {
-            BallCollision.OnCollidedMultiplierX += CreateSecondBalls;
+            MultiplierX.OnCollidedMultiplierX += CreateSecondBalls;
             cupDropController.OnDropped += Init;
         }
 
         private void OnDisable()
         {
-            BallCollision.OnCollidedMultiplierX -= CreateSecondBalls;
+            MultiplierX.OnCollidedMultiplierX -= CreateSecondBalls;
             cupDropController.OnDropped -= Init;
         }
 
