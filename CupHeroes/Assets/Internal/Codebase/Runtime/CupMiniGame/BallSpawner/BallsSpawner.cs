@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Factories.BallsFactory;
@@ -17,9 +18,10 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
     {
         [field: SerializeField] public List<Ball.Ball> Balls { get; private set; }
         [field: SerializeField] public int MaxBallsCount { get; private set; }
+        public static Action<int, HashSet<int>, Vector3> OnCollidedBall;
 
         private IBallsFactory ballsFactory;
-        private int ballsOnStartMiniGame = 8;
+        private int ballsOnStartMiniGame = 1;
         private Cup.Cup cup;
         private CupDropController cupDropController;
         private float timeBetweenSpawnFirstBalls = 0.1f;
@@ -35,13 +37,13 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BallSpawner
 
         private void OnEnable()
         {
-            MultiplierX.OnCollidedMultiplierX += CreateSecondBalls;
+            BallCollision.OnCollidedMultiplierX += CreateSecondBalls;
             cupDropController.OnDropped += Init;
         }
 
         private void OnDisable()
         {
-            MultiplierX.OnCollidedMultiplierX -= CreateSecondBalls;
+            BallCollision.OnCollidedMultiplierX -= CreateSecondBalls;
             cupDropController.OnDropped -= Init;
         }
 

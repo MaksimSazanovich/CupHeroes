@@ -12,15 +12,16 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
     {
         private float force = 9;
         private Collider2D collisionGameObject;
-        private readonly float invincibleTime = 3;
+        private readonly float invincibleTime = 1;
         private float pushOffsetX = 2f;
 
-        public static Action<int> OnFelt;
-        
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out BallCollision ballCollision) && transform.position.y <= other.transform.position.y)
+            if (other.TryGetComponent(out BallCollision ballCollision) &&
+                transform.position.y < other.transform.position.y && !ballCollision.LockBoosterLineIDs.Contains(ID))
             {
+                //ballCollision.LockPusherUpID(this);
+                ballCollision.Lock(this);
                 PushUpCollision(other);
             }
         }
@@ -28,7 +29,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         private void PushUpCollision(Collider2D other)
         {
             collisionGameObject = other;
-            StartCoroutine(ChangeCollisionObjectLayer());
+            StartCoroutine(ChangeCollisionObjectLayer(other.GetComponent<BallCollision>()));
             PushUp(other.transform.position.x);
         }
 
@@ -36,15 +37,16 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.PusherUp
         {
             Rigidbody2D otherRigidbody2D = collisionGameObject.GetComponent<Rigidbody2D>();
             otherRigidbody2D.velocity = Vector2.zero;
-            otherRigidbody2D.AddForce(new Vector2(Random.Range(otherPositionX-pushOffsetX, -otherPositionX-pushOffsetX), force), ForceMode2D.Impulse);
+            otherRigidbody2D.AddForce(
+                new Vector2(Random.Range(otherPositionX - pushOffsetX, -otherPositionX - pushOffsetX), force),
+                ForceMode2D.Impulse);
         }
 
-        private IEnumerator ChangeCollisionObjectLayer()
+        private IEnumerator ChangeCollisionObjectLayer(BallCollision ballCollision)
         {
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Flyup);
             yield return new WaitForSeconds(invincibleTime);
             collisionGameObject.gameObject.layer = LayerMask.NameToLayer(Layers.Ball);
-            OnFelt?.Invoke(ID);
         }
     }
 }

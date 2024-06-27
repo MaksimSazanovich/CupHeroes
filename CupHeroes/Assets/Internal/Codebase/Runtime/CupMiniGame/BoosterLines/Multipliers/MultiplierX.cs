@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;
 using Internal.Codebase.Runtime.Constants;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
@@ -16,8 +15,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
     {
         private IResourceProvider resourceProvider;
         [field: SerializeField] public int Value { get; private set; }
-        public static Action<int, HashSet<int>, Vector3> OnCollidedMultiplierX;
-        
+        public static Action<MultiplierX> OnCollidedBall;
 
         protected override void OnValidate()
         {
@@ -41,10 +39,11 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out BallCollision ballCollision) && transform.position.y <= other.transform.position.y)
+            if (other.TryGetComponent(out BallCollision ballCollision) &&
+                transform.position.y < other.transform.position.y && !ballCollision.LockBoosterLineIDs.Contains(ID))
             {
-                OnCollidedMultiplierX?.Invoke(Value - 1, new HashSet<int>(ballCollision.LockBoosterLineIDs),
-                    transform.position);
+                //ballCollision.LockMultiplierX(this);
+                ballCollision.Lock(this);
             }
         }
 
