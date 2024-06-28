@@ -2,6 +2,7 @@ using System;
 using Internal.Codebase.Infrastructure.Services.ResourceProvider;
 using Internal.Codebase.Runtime.Constants;
 using Internal.Codebase.Runtime.CupMiniGame.Ball;
+using Internal.Codebase.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -31,7 +32,7 @@ namespace Internal.Codebase.Runtime.CupMiniGame.BoosterLines.Multipliers
 
         private void Start()
         {
-            int randomValue = Random.Range(resourceProvider.LoadMultipliersConfig().MinValue,
+            int randomValue = HierarchyRandom.Range(resourceProvider.LoadMultipliersConfig().MinValue,
                 resourceProvider.LoadMultipliersConfig().MaxValue);
             Value = randomValue;
             SetSettings(Value);

@@ -8,26 +8,24 @@ namespace Internal.Codebase.Utilities
         {
             int firstSum = maxValue - minValue + 1;
             int sum = firstSum * (firstSum + 1) / 2 + 1;
-            int randomValue = UnityEngine.Random.Range(1, sum);
-            Debug.Log($"randomValue {randomValue}");
-            int c = 1;
-            int p = firstSum;
-            for (int i = firstSum - 1; i > 1; i--)
+            int randomValue = Random.Range(1, sum);
+            int min = 0;
+            int max = 1;
+            for (int i = 1; i <= firstSum + 1; i++)
             {
-                if (randomValue > p) c++;
-                else break;
-                p += i;
+                min += i;
+                max = min + i + 1;
+                if (randomValue == 1)
+                {
+                    return maxValue;
+                }
+                if (randomValue >= min && randomValue <= max)
+                {
+                    int group = i + 1;
+                    return maxValue - group + 1;
+                }
             }
-            return p;
-
-
-            /*
-            10 =>      5
-            8,9 =>     4
-            5,6,7 =>   3
-            1,2,3,4 => 2
-
-            */
+            return 0;
         }
     }
 }
